@@ -1,0 +1,99 @@
+# 7-base_geometry.txt
+
+USAGE:
+
+This modules defines a base geometry class BaseGeometry.
+
+First import the method to test:
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+SUCCESS CASES:
+
+Test ints greater than 0 (No error is raised and nothing is returned):
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", 711)
+
+FAIL CASES:
+
+Test non-implemented area method:
+     >>> bg = BaseGeometry()
+     >>> bg.area()
+     Traceback (most recent call last):
+     ...
+     Exception: area() is not implemented
+
+Test ints less than or equal to 0:
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", 0)
+     Traceback (most recent call last):
+     ...
+     ValueError: checkInt must be greater than 0
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", -711)
+     Traceback (most recent call last):
+     ...
+     ValueError: checkInt must be greater than 0
+
+Test other data types:
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", None)
+     Traceback (most recent call last):
+     ...
+     TypeError: checkInt must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", "Bienvenue!")
+     Traceback (most recent call last):
+     ...
+     TypeError: checkInt must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", "10")
+     Traceback (most recent call last):
+     ...
+     TypeError: checkInt must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", [1, 2, 3])
+     Traceback (most recent call last):
+     ...
+     TypeError: checkInt must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", (1, 2, 3))
+     Traceback (most recent call last):
+     ...
+     TypeError: checkInt must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", {"key": 6})
+     Traceback (most recent call last):
+     ...
+     TypeError: checkInt must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("Score", True)
+     Traceback (most recent call last):
+     ...
+     TypeError: Score must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkInt", {3, 4})
+     Traceback (most recent call last):
+     ...
+     TypeError: checkInt must be an integer
+
+Test invalid number of arguments:
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator()
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("Score")
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 1 required positional argument: 'value'

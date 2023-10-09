@@ -1,0 +1,83 @@
+# 1-my_list.txt
+
+USAGE:
+
+This module defines a class ``MyList`` that inherits from ``list``.
+
+First import the method to test:
+>>> MyList = __import__('1-my_list').MyList
+
+SUCCESS CASES:
+
+Test integers (program assumes all elements of the list will be of type int):
+
+::
+
+     >>> my_list = MyList()
+     >>> my_list.append(5)
+     >>> my_list.append(10)
+     >>> my_list.append(-7)
+     >>> print(my_list)
+     [5, 10, -7]
+     >>> my_list.print_sorted()
+     [-7, 5, 10]
+     >>> print(my_list)
+     [5, 10, -7]
+
+     >>> my_list2 = MyList()
+     >>> my_list2.append(100)
+     >>> my_list2.append(50)
+     >>> my_list2.append(-1)
+     >>> print(my_list2)
+     [100, 50, -1]
+     >>> my_list2.print_sorted()
+     [-1, 50, 100]
+     >>> print(my_list2)
+     [100, 50, -1]
+     >>> id(my_list2) is not id(my_list2.print_sorted())
+     [-1, 50, 100]
+     True
+
+Test list with only one element:
+     >>> one_element = MyList()
+     >>> one_element.append(9827)
+     >>> print(one_element)
+     [9827]
+     >>> one_element.print_sorted()
+     [9827]
+
+Test list with no elements:
+     >>> empty = MyList()
+     >>> print(empty)
+     []
+     >>> empty.print_sorted()
+     []
+
+Test type, isinstance, issubclass:
+     >>> type(MyList())
+     <class '1-my_list.MyList'>
+
+     >>> isinstance(MyList, object)
+     True
+
+     >>> isinstance(MyList, list)
+     False
+
+     >>> issubclass(MyList, list)
+     True
+
+     >>> 'print_sorted' in dir(MyList)
+     True
+
+FAIL CASES:
+
+Test 'None' passed as an element:
+
+::
+
+	>>> my_list = MyList(None)
+	Traceback (most recent call last):
+	...
+	TypeError: 'NoneType' object is not iterable
+
+
